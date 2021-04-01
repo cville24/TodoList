@@ -2,31 +2,30 @@
   <div id="app-2">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld :msg="msg2"/>
-    <InputList @event="getTask"/>
-    {{ task }}
-    <TableToDo />
+    <AddTodo @addTodo="onAddTodo"/>
+    <TableToDo :tasks="tasks"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import InputList from './components/InputList.vue'
+import AddTodo from './components/AddTodo.vue'
 import TableToDo from './components/TableToDo'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    InputList,
+    AddTodo,
     TableToDo
   },
   data: ()=>({
     msg2: "Todo List",
-    task: null
+    tasks: []
   }),
   methods: {
-    getTask: function(value){
-      this.task = value;
+    onAddTodo: function(task){
+      this.tasks = [...this.tasks, task];
       }
   }
 }
