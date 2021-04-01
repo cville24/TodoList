@@ -13,7 +13,7 @@
           <td>Avancer la tache</td>
           <td>Supprimer</td>
         </tr>
-        <tr v-for="task in tasks" :key="task.message">
+        <tr v-for="(task,i) in tasks" :key="i" :class="i %2 === 0 ? 'pair':'impair'">
           <td>{{ task.message }}</td>
           <td><input type="checkbox" :checked="task.done" /></td>
           <td></td>
@@ -42,5 +42,12 @@ thead,
 tfoot {
   background-color: #333;
   color: #fff;
+}
+
+tr.pair {
+  background-color : blue;
+}
+tr.impair {
+  background-color : red;
 }
 </style>
